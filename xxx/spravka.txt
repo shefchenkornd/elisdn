@@ -1,1 +1,7 @@
 composer install --no-dev // on prod'e
+
+Laravel 5 IDE Helper Generator
+https://github.com/barryvdh/laravel-ide-helper
+
+Чтобы отредактировать конфиг IDE Helper Generator и переместить его в папку config/
+php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config
