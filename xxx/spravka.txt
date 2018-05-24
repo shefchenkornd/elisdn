@@ -5,3 +5,7 @@ https://github.com/barryvdh/laravel-ide-helper
 
 Чтобы отредактировать конфиг IDE Helper Generator и переместить его в папку config/
 php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config
+
+
+debug install
+composer require barryvdh/laravel-debugbar --dev
