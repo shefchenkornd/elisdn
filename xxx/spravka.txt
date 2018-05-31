@@ -9,3 +9,6 @@ php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServic
 
 debug install
 composer require barryvdh/laravel-debugbar --dev
+
+Создание роутов для аутентифи-ции
+php artisan make:auth
