@@ -12,3 +12,20 @@ composer require barryvdh/laravel-debugbar --dev
 
 Создание роутов для аутентифи-ции
 php artisan make:auth
+
+
+npm install -g yarn // создаст аналог composer.lock для npm
+yarn install // создаст папку 'node_modules'
+
+webpack // для сборки js
+// но все офигели от его конфига, поэтому придумали Laravel mix
+
+-------------------------------------------
+
+Laravel Elixir
+Laravel mix     // для создания билда создаем файл webpack.mix.js и небольшой конфиг
+
+-------------------------------------------
+
+npm run dev // сбилдит js+css только разМиниФицирует их,тк. это мы указали dev
+npm run prod // минифицирует
