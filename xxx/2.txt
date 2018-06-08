@@ -3,3 +3,12 @@ Mysql
 Apache/Nginx
 
 ------------------
+Nginx
+php-fpm
+mysql/postgresSql
+redis
+memcache
+nodeJs
+GO
+RabbitMQ // шина данных/сообщений
+SupervisorD
