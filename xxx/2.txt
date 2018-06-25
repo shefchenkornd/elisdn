@@ -12,3 +12,30 @@ nodeJs
 GO
 RabbitMQ // шина данных/сообщений
 SupervisorD
+
+------------------
+
+
+
+             /-- Static files  (img, video, ...)
+            /--- Static files
+Nginx    ------- Static files
+Load
+Balancer ------- PHP-FPM  ------- Mysql M
+          \----- PHP-FPM  ------- Mysql Slave
+           \---- PHP-FPM  ------- Mysql Slave
+            \--- PHP-FPM  ------\
+             \-- PHP-FPM  ------- Redis (для хранения сессий)
+                                /
+                                \ Memcache
+                                /
+                                \ PHP-CLI
+                             \--- RabbitMQ
+                                     \
+                                     NodeJS
+
+20 виртуалок можно поднять на сервере, почему?
+>> т.к. на одной ОС нельзя поднять Mysql Master и Slave, т.е нужны разные виртуалки
+Когда система разбита на компоненты их можно легко комбинировать
+
+------------------
