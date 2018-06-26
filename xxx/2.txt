@@ -2,7 +2,7 @@ PHP
 Mysql
 Apache/Nginx
 
-------------------
+=====================
 
 Nginx
 php-fpm
@@ -14,13 +14,7 @@ GO
 RabbitMQ // шина данных/сообщений
 SupervisorD
 
-------------------
-
-<<<<<<< HEAD
---scale mysql 10
-
-sudo docker run --name db -d -e MYSQL_ROOT_PASSWORD=12345 -p 3306:3306 mysql:latest
-=======
+=====================
 
 
              /-- Static files  (img, video, ...)
@@ -44,5 +38,10 @@ Balancer ------- PHP-FPM  ------- Mysql M
 >> т.к. на одной ОС нельзя поднять Mysql Master и Slave, т.е нужны разные виртуалки
 Когда система разбита на компоненты их можно легко комбинировать
 
-------------------
->>>>>>> ea6e1578b4228702495af7884dae66b9f03c4ad1
+
+=====================
+
+--scale mysql 10
+
+sudo docker run --name db -d -e MYSQL_ROOT_PASSWORD=12345 -p 3306:3306 mysql:latest
+
