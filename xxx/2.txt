@@ -3,6 +3,7 @@ Mysql
 Apache/Nginx
 
 ------------------
+
 Nginx
 php-fpm
 mysql/postgresSql
@@ -12,3 +13,9 @@ nodeJs
 GO
 RabbitMQ // шина данных/сообщений
 SupervisorD
+
+------------------
+
+--scale mysql 10
+
+sudo docker run --name db -d -e MYSQL_ROOT_PASSWORD=12345 -p 3306:3306 mysql:latest
