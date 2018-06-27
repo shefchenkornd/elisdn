@@ -14,18 +14,35 @@ composer require barryvdh/laravel-debugbar --dev
 php artisan make:auth
 
 
-npm install -g yarn // создаст аналог composer.lock для npm
-yarn install // создаст папку 'node_modules'
+/******************  install NodeJS + NPM **************************/
+/* нужно установить node_modules и все зависимости с ней */
 
-webpack // для сборки js
-// но все офигели от его конфига, поэтому придумали Laravel mix
+// установи nodejs
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
--------------------------------------------
+// если вылетает ошибка мол требуется gnupg, то...
+apt-get install -my wget gnupg
 
-Laravel Elixir
-Laravel mix     // для создания билда создаем файл webpack.mix.js и небольшой конфиг
+// проверим версию node
+node -v
 
--------------------------------------------
+// проверим версию npm
+npm -v
 
+// создаст аналог composer.lock для npm
+npm install -g yarn
+
+// создаст папку 'node_modules'
+yarn install
+
+// для сборки js, но все офигели от его конфига, поэтому придумали Laravel mix
+// поэтому мы его не трогаем, а юзаем "laravel-mix", который прописал в package.json
+webpack
+
+// Laravel mix для создания билда создаем файл webpack.mix.js и небольшой конфиг
 npm run dev // сбилдит js+css только разМиниФицирует их,тк. это мы указали dev
 npm run prod // минифицирует
+
+/********************************************/
+
