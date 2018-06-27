@@ -4,10 +4,10 @@ services:
     build:
       context: ./
       dockerfile: docker/nginx.docker
-    ports:
-     - "8080:80"
     volumes:
       - ./:/var/www
+    ports:
+     - "8080:80"
     links:
       - php-fpm
   php-fpm:
