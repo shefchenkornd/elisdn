@@ -20,6 +20,15 @@ services:
     links:
       - mysql
       - redis
+  php-cli:
+    build:
+      context: ./
+      dockerfile: docker/php-cli.docker
+    volumes:
+      - ./:/var/www
+    links:
+      - mysql
+      - redis
   mysql:
     image: mysql:5.7
     volumes:
