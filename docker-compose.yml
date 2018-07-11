@@ -46,9 +46,7 @@ services:
     ports:
       - "63791:6379"
   node:
-    build:
-      context: ./
-      dockerfile: docker/node.docker
+    image: "node:8"
     volumes:
       - ./:/var/www
     tty: true

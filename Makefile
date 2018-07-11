@@ -18,7 +18,7 @@ assets-install:
 	sudo docker exec app_node_1 yarn install
 
 assets-dev:
-	sudo docker exec app_node_1 yarn run dev
+	sudo docker exec app_node_1 bash -c "cd /var/www && yarn run dev"
 
 assets-watch:
 	sudo docker exec app_node_1 yarn run watch
