@@ -45,3 +45,12 @@ Balancer ------- PHP-FPM  ------- Mysql M
 
 sudo docker run --name db -d -e MYSQL_ROOT_PASSWORD=12345 -p 3306:3306 mysql:latest
 
+=====================
+
+Настраиваем phpunit тесты:
+
+1. делаем так чтобы Docker запускался без sudo
+2. в настройках (Settings->Language & Frameworks->PHP) PhpStorm указываем интрерпритатор PHP через docker-compose
+3. указываем через какой  сервис из docker-compose будет исполняться интрерпритатор PHP
+4. указываем откуда брать phpunit.xml файл
+остальное погуглишь)

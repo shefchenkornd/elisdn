@@ -23,7 +23,7 @@ services:
   php-cli:
     build:
       context: ./
-      dockerfile: docker/php-cli.docker
+      dockerfile: docker/php-fpm.docker
     volumes:
       - ./:/var/www
     links:
