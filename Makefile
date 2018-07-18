@@ -12,13 +12,16 @@ perm:
 	sudo chown ${USER}:${USER} storage -R
 
 test:
-	sudo docker exec app_php-fpm_1 vendor/bin/phpunit --colors=always
+	sudo docker-compose exec php-fpm vendor/bin/phpunit --colors=always
 
 assets-install:
-	sudo docker exec app_node_1 yarn install
+	sudo docker-compose exec node yarn install
+
+assets-rebuild:
+	sudo docker-compose exec node npm rebuild node-sass --force
 
 assets-dev:
-	sudo docker exec app_node_1 bash -c "cd /var/www && yarn run dev"
+	sudo docker-compose exec node bash -c "cd /var/www && yarn run dev"
 
 assets-watch:
-	sudo docker exec app_node_1 yarn run watch
+	sudo docker-compose exec node yarn run watch
