@@ -23,5 +23,11 @@ assets-rebuild:
 assets-dev:
 	sudo docker-compose exec node bash -c "cd /var/www && yarn run dev"
 
+assets-prod:
+	sudo docker-compose exec node bash -c "cd /var/www && yarn run prod"
+
+assets-watch:
+	sudo docker-compose exec node yarn run watch
+
 assets-watch:
 	sudo docker-compose exec node yarn run watch
