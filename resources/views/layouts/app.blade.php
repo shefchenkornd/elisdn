@@ -53,6 +53,7 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="{{ route('cabinet') }}">Cabinet</a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -71,8 +72,25 @@
             </div>
         </nav>
 
-        @yield('content')
     </header>
+
+    <main class="app-content py-3">
+        <div class="container">
+            @yield('breadcrums')
+            @include('layouts.partials.flash')
+            @yield('content')
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="border-top pt-3">
+                <p>
+                    &copy; {{ date('Y') }} - Adverts
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js', 'build') }}"></script>

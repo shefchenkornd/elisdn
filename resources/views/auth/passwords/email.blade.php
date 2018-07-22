@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('breadcrums')
+    <ul class="breadcrums">
+        <li class="breadcrums-item"><a href="{{ route('home')  }}">Home</a></li>
+        <li class="breadcrums-item"><a href="{{ route('login')  }}">Login</a></li>
+        <li class="breadcrums-item active">Reset</li>
+    </ul>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
