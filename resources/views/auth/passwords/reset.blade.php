@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('breadcrums')
-    <ul class="breadcrums">
-        <li class="breadcrums-item"><a href="{{ route('home')  }}">Home</a></li>
-        <li class="breadcrums-item"><a href="{{ route('login')  }}">Login</a></li>
-        <li class="breadcrums-item"><a href="{{ route('password.request')  }}">Reset</a></li>
-        <li class="breadcrums-item active">Change</li>
+@section('breadcrumb')
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('home')  }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('login')  }}">Login</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('password.request')  }}">Reset</a></li>
+        <li class="breadcrumb-item active">Change</li>
     </ul>
 @endsection
 
