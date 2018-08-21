@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-07-23 17:09:31.
+    * Generated on 2018-08-21 11:42:14.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -41,6 +41,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
@@ -175,6 +177,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
@@ -309,6 +313,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
@@ -443,6 +449,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
@@ -577,6 +585,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
@@ -711,6 +721,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
         'cache' => \Illuminate\Cache\CacheManager::class,
@@ -845,6 +857,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
+        'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
+        'flash' => \Laracasts\Flash\FlashNotifier::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'Illuminate\Console\Scheduling\Schedule' => \Illuminate\Console\Scheduling\Schedule::class,
         'cache' => \Illuminate\Cache\CacheManager::class,

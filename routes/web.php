@@ -14,5 +14,7 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Auth::routes();
 Route::get('/cabinet', 'Cabinet\HomeController@index')->name('cabinet');
+Route::get('/cabinet', 'Cabinet\HomeController@index')->name('cabinet');
+
+Route::get('/register', 'Auth\RegisterController@register')->name('register');
