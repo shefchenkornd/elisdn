@@ -39,3 +39,5 @@ docker-compose exec node yarn remove vue
 во вьюхе
 include - подключает файл
 yield -  создает секцию
+
+
