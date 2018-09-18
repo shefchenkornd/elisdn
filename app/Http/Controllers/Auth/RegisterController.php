@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\Auth\VerifyMail;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -11,26 +12,44 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function register(Request $request){
-        if ($request->isMethod('POST')) {
-            $this->validate($request, [
-               'name' => 'required|string|max:255',
-               'email' => 'required|string|email|max:255|unique:users',
-               'password' => 'required|string|min:6|confirmed',
-            ]);
+    use RegistersUsers;
 
-            $user = User::create([
-                'name' => $request['name'],
-                'email' => $request['email'],
-                'password' => bcrypt($request['password']),
-            ]);
+    protected $redirectTo = '/cabinet';
 
-            Auth::login($user); // авторизируем пользователя
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
 
-            return redirect()->route('home');
-        }
+    protected function validator(array  $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
 
+    protected function create(array $data)
+    {
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'verify_token' => Str::random(),
+            'status' => User::STATUS_WAIT,
+        ]);
 
-        return view('auth.register');
+        \Mail::to($user->email)->queue(new VerifyMail());
+
+        return redirect()->route('home');
+    }
+
+    protected function registered()
+    {
+        $this->guard()->logout();
+
+        return redirect()->route('login')
+                    ->with('success', 'Проверьте ваш емайл');
     }
 }
