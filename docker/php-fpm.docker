@@ -1,6 +1,9 @@
 FROM php:7.1-fpm
 
 RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client \
-    && docker-php-ext-install mcrypt pdo_mysql
+    && docker-php-ext-install mcrypt pdo_mysql \
+    && apt-get install less && apt-get install nano
+
+ADD ./docker/.bashrc /root
 
 WORKDIR /var/www
