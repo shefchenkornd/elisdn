@@ -43,3 +43,6 @@ yield -  создает секцию
 ---------------------------------------
 
 php artisan make:mail --markdown -- Auth\\VerifyMail
+
+создаем свои правила валидации $request
+php artisan make:request Auth\\LoginRequest

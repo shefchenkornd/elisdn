@@ -7,9 +7,12 @@ docker-down:
 docker-build: perm
 	sudo docker-compose up --build
 
+php:
+	sudo docker-compose exec php-fpm bash
+
 perm:
 	sudo chown ${USER}:${USER} bootstrap/cache -R
-	sudo chown ${USER}:${USER} storage -R
+	sudo chown ${USER}:${USER} storage -R  && sudo chmod 777 -R storage
 
 test:
 	sudo docker-compose exec php-fpm vendor/bin/phpunit --colors=always
