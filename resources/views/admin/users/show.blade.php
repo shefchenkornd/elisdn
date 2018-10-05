@@ -38,22 +38,6 @@
                 @endif
             </td>
         </tr>
-
-        ///////
-        </tr>
-        </thead>
-        <tbody>
-
-        @foreach($users as $user)
-            <tr>
-
-                <td><a href="{{ route('admin.users.show', $user) }}">{{ $user->name }}</a></td>
-
-
-            </tr>
-        @endforeach
-        /////////
-
         </tbody>
     </table>
 
