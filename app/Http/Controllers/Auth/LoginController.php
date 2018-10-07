@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Entity\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Auth\LoginRequest;
+Use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -50,17 +54,20 @@ class LoginController extends Controller
         // the IP address of the client making these requests into this application.
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
+            $this->sendLockoutResponse($request);
         }
 
-        if ($this->attemptLogin($request)) {
+        $authenticate = Auth::attempt(
+            $request->only('email', 'password'),
+            $request->filled('remember_token')
+        );
+        
+        if ($authenticate) {
             $request->session()->regenerate();
-
             $this->clearLoginAttempts($request);
 
-            $user = \Auth::user();
-            if (!$user->status !== USER::STATUS_ACTIVE) {
+            $user = Auth::user();
+            if ($user->status !== User::STATUS_ACTIVE) {
                 Auth::logout();
                 return back()->with('error', 'You need to confirm your account. Please check your email.');
             }
@@ -79,12 +86,6 @@ class LoginController extends Controller
 
     }
 
-    protected function attemptLogin(LoginRequest $request)
-    {
-        return $this->guard()->attempt(
-            $this->credentials($request), $request->filled('remember')
-        );
-    }
 
     /**
      * Log the user out of the application.
@@ -94,10 +95,8 @@ class LoginController extends Controller
      */
     public function logout(LoginRequest $request)
     {
-        $this->guard()->logout();
-
+        Auth::guard()->logout();
         $request->session()->invalidate();
-
         return redirect()->route('home');
     }
 
@@ -108,6 +107,6 @@ class LoginController extends Controller
      */
     public function username()
     {
-        return 'name';
+        return 'email';
     }
 }

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Mail\Auth\VerifyMail;
-use App\User;
+use App\Entity\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use App\Http\Requests\Auth\RegisterRequest;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
