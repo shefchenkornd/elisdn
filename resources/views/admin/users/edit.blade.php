@@ -5,8 +5,8 @@
 
 
     <form method="POST" action="{{ route('admin.users.update', $user) }}">
-        @csrf
-        @method('PUT')
+        {{ csrf_field() }}
+        {{ method_field('PUT') }}
 
         <div class="form-group">
             <label for="name" class="col-form-label">Name</label>
@@ -29,6 +29,7 @@
             <select name="status" id="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
                 @foreach($statuses as $value => $label)
                 <option value="{{ $value }}" {{ $value === old('status', $user->status ? ' selected' : '' ) }}>{{ $value }}</option>
+                @endforeach
             </select>
             @if ($errors->has('status'))
                 <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>

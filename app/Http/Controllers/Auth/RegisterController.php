@@ -40,7 +40,7 @@ class RegisterController extends Controller
             'status' => User::STATUS_WAIT,
         ]);
 
-        \Mail::to($user->email)->queue(new VerifyMail($user));
+        //\Mail::to($user->email)->queue(new VerifyMail($user));
         event(new Registered($user));
 
         return redirect()->route('login')
@@ -80,7 +80,7 @@ class RegisterController extends Controller
 
         \Mail::to($user->email)->queue(new VerifyMail());
 
-        return redirect()->route('home');
+        return redirect()->route('cabinet');
     }
 
     protected function registered()

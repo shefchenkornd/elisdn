@@ -33,6 +33,6 @@
         </tbody>
     </table>
 
-    {{ $users->links() }}
+    {{--{ $users->links() }--}}
 
 @endsection

@@ -5,9 +5,9 @@
 
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary mr-1">Edit</a>
-        <form method="POST" action="{{ route('admin.users.update') }}" class="mr-1">
-            @csrf
-            @method('DELETE')
+        <form method="POST" action="{{ route('admin.users.update', $user) }}" class="mr-1">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
             <button class="btn btn-danger">Delete</button>
         </form>
     </div>
@@ -41,6 +41,6 @@
         </tbody>
     </table>
 
-    {{ $users->links() }}
+    {{--{ $users->links() }--}}
 
 @endsection

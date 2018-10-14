@@ -51,7 +51,7 @@ class LoginController extends Controller
     {
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
+        // the IP address of the client making ther', 'You need to confirm your account. Plese requests into this application.
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
             $this->sendLockoutResponse($request);
@@ -61,7 +61,7 @@ class LoginController extends Controller
             $request->only('email', 'password'),
             $request->filled('remember_token')
         );
-        
+
         if ($authenticate) {
             $request->session()->regenerate();
             $this->clearLoginAttempts($request);
