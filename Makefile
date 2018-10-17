@@ -1,10 +1,10 @@
-docker-up:
+up:
 	sudo docker-compose up
 
-docker-down:
+down:
 	sudo docker-compose down
 
-docker-build: perm
+build: perm
 	sudo docker-compose up --build
 
 php:
