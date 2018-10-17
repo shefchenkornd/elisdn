@@ -46,3 +46,6 @@ php artisan make:mail --markdown -- Auth\\VerifyMail
 
 создаем свои правила валидации $request
 php artisan make:request Auth\\LoginRequest
+
+создаем Unit-тесты в папке 'Unit'
+php artisan make:test Entity\\User\\CreateTest --unit

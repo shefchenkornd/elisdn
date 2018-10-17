@@ -25,18 +25,6 @@
         </div>
 
         <div class="form-group">
-            <label for="status" class="col-form-label">Status</label>
-            <select name="status" id="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}">
-                @foreach($statuses as $value => $label)
-                <option value="{{ $value }}" {{ $value === old('status', $user->status ? ' selected' : '' ) }}>{{ $value }}</option>
-                @endforeach
-            </select>
-            @if ($errors->has('status'))
-                <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
-            @endif
-        </div>
-
-        <div class="form-group">
             <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
