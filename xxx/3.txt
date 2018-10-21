@@ -49,3 +49,10 @@ php artisan make:request Auth\\LoginRequest
 
 создаем Unit-тесты в папке 'Unit'
 php artisan make:test Entity\\User\\CreateTest --unit
+
+---------------------------------------
+
+Сервисные услуги - service provider
+
+Всё, что лежит в use Illuminate\Contracts\*,- это интерфейсы, которые описывают необходимый минимум.
+Цель использования Illuminate\Contracts\* для заглушек, или для того чтобы потом безболезнно можно было поменять на другой класс, например, Mailer.

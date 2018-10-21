@@ -8,9 +8,18 @@ use App\Http\Requests\Admin\Users\CreateRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use App\UseCases\Auth\RegisterService;
 
 class UsersController extends Controller
 {
+
+    private $service;
+
+    public function __construct(RegisterService $service)
+    {
+        $this->service = $service;
+    }
+
     public function index()
     {
         $users = User::orderBy('id', 'desc')->paginate(20);
@@ -65,7 +74,7 @@ class UsersController extends Controller
 
     public function verify(User $user)
     {
-        $user->verify();
+        $this->service->verify($user->id);
 
         return redirect()->route('admin.users.show', $user);
     }

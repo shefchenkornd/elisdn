@@ -12,14 +12,15 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Support\Str;
+use App\UseCases\Auth\RegisterService;
 
 class RegisterController extends Controller
 {
+    private $service;
 
-    protected $redirectTo = '/cabinet';
-
-    public function __construct()
+    public function __construct(RegisterService $service)
     {
+        $this->service = $service;
         $this->middleware('guest');
     }
 
@@ -32,14 +33,7 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        $user = User::register(
-            $request['name'],
-            $request['email'],
-            $request['password']
-        );
-
-        //\Mail::to($user->email)->send(new VerifyMail($user));
-        event(new Registered($user));
+        $this->service->register($request);
 
         return redirect()->route('login')
             ->with('success', 'Your email is verified. You can now login.');
@@ -54,7 +48,7 @@ class RegisterController extends Controller
         }
 
         try{
-            $user->verify();
+            $this->service->verify($user->id);
             return redirect()->route('login')->with('success', 'Your email is verified. You can now login.');
         }catch (\DomainException $e){
             return redirect()->route('login')->with('error', $e->getMessage());
