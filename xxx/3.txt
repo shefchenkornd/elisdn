@@ -52,7 +52,7 @@ php artisan make:test Entity\\User\\CreateTest --unit
 
 ---------------------------------------
 
-Сервисные услуги - service provider
+Внедрение сервисного слоя (Service Layer) - service provider
 
 Всё, что лежит в use Illuminate\Contracts\*,- это интерфейсы, которые описывают необходимый минимум.
 Цель использования Illuminate\Contracts\* для заглушек, или для того чтобы потом безболезнно можно было поменять на другой класс, например, Mailer.
