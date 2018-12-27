@@ -17,6 +17,8 @@ class AddUserVerification extends Migration
             $table->string('status', 16);
             $table->string('verify_code')->nullable()->unique();
         });
+
+        DB::table('users')->update(['status' => 'active']);
     }
 
     /**
