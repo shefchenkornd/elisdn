@@ -4,7 +4,7 @@
     @include('admin.users._nav')
 
     <form method="POST" action="{{ route('admin.users.store') }}">
-        @csrf
+        {{ csrf_field() }}
 
         <div class="form-group">
             <label for="name" class="col-form-label">Name</label>

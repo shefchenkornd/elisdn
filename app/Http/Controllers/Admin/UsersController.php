@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\UseCases\Auth\RegisterService;
+use Faker;
 
 class UsersController extends Controller
 {
@@ -69,7 +70,7 @@ class UsersController extends Controller
     {
         $user->delete();
 
-        return view('admin.users.index');
+        return redirect()->route('admin.users.index');
     }
 
     public function verify(User $user)

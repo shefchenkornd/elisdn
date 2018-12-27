@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'status'
+        'name', 'email', 'password', 'status', 'verify_code'
     ];
 
     /**
@@ -77,7 +77,7 @@ class User extends Authenticatable
 
         $this->update([
             'status' => self::STATUS_ACTIVE,
-            'verify_token' => null
+            'verify_code' => null
         ]);
     }
 }

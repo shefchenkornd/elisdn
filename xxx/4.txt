@@ -1,0 +1,49 @@
+Администрирование пользователей
+Фильтрация пользователей
+Контроль доступа
+Роли и разрешения
+База городов и областей
+Администрирование регионов
+
+=====================================
+
+шаблон
+фикстуры
+анон.функцию
+консоль.комнд
+заполни 100 штук
+
+Faker is a PHP library that generates fake data for you
+
+php artisan tinker
+$users = factory(App\Entity\User::class, 3)->make();
+$users = factory(App\Entity\User::class, 3)->make(['status'=>App\Entity\User::STATUS_WAIT]);
+
+
+Запуск загрузки начальных данных
+php artisan db:seed --class=UsersTableSeeder
+php artisan db:seed --class=UsersTableSeeder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=====================================

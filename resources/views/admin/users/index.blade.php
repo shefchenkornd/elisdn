@@ -3,6 +3,12 @@
 @section('content')
     @include('admin.users._nav')
 
+    <br>
+
+    <a href="{{ route('admin.users.create') }}" class="btn btn-success">Add User</a>
+
+    <br><br>
+
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -13,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        
+
         @foreach($users as $user)
         <tr>
             <td>{{ $user->id }}</td>
@@ -32,7 +38,5 @@
         
         </tbody>
     </table>
-
-    {{--{ $users->links() }--}}
 
 @endsection

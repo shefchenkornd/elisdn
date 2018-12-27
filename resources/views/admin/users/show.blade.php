@@ -6,10 +6,12 @@
     <div class="d-flex flex-row mb-3">
         <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary mr-1">Edit</a>
 
-        <form method="POST" action="{{ route('admin.users.verify', $user) }}" class="mr-1">
-            {{ csrf_field() }}
-            <button class="btn btn-success">Verify</button>
-        </form>
+        @if ($user->isWait())
+            <form method="POST" action="{{ route('admin.users.verify', $user) }}" class="mr-1">
+                {{ csrf_field() }}
+                <button class="btn btn-success">Verify</button>
+            </form>
+        @endif
 
         <form method="POST" action="{{ route('admin.users.update', $user) }}" class="mr-1">
             {{ csrf_field() }}
@@ -46,7 +48,5 @@
         </tr>
         </tbody>
     </table>
-
-    {{--{ $users->links() }--}}
 
 @endsection
