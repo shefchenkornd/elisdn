@@ -10,6 +10,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CreateTest extends TestCase
 {
+    // создаёт транзакцию, тесты проходят, а потом откатывает наш тест, профит!
+    // и БД тестовыми вещами не загромождается
     use DatabaseTransactions;
 
     public function testNew(): void
@@ -26,5 +28,6 @@ class CreateTest extends TestCase
         self::assertNotEmpty($user->password);
 
         self::assertTrue($user->isActive());
+        self::assertFalse($user->isAdmin());
     }
 }

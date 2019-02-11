@@ -23,27 +23,19 @@ $users = factory(App\Entity\User::class, 3)->make(['status'=>App\Entity\User::ST
 Запуск загрузки начальных данных
 php artisan db:seed --class=UsersTableSeeder
 php artisan db:seed --class=UsersTableSeeder
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 =====================================
+Роли и разрешения
+
+role-based access control
+
+Регистрация -> user
+Создание
+Смена
+
+-----
+                    user    moderator   manager     admin
+
+user.show                       +          +          +
+user.manage
+comments.show                   +                     +
+comments.remove                 +                     +
