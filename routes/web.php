@@ -26,7 +26,7 @@ Route::group(
         'prefix' => 'admin',
         'as' => 'admin.',
         'namespace' => 'Admin',
-        'middleware' => ['auth'],
+        'middleware' => ['auth', 'can:admin-panel'], // добавили свой Gate для админ-панели
     ],
     function()
     {

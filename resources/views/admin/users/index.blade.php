@@ -64,28 +64,17 @@
                         </div>
                     </div>
 
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label class="col-form-label">&nbsp;</label>
+                            <button type="submit" class="btn btn-block btn-info">search</button>
+                        </div>
+                    </div>
+
                 </div>
             </form>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <table class="table table-bordered table-striped">
@@ -109,13 +98,13 @@
                 @if ($user->isWait())
                     <span class="badge badge-secondary">Waiting</span>
                 @endif
-                @if ($user->isActive)
-                    <span class="badge badge-primary">Active</span>
+                @if ($user->isActive())
+                    <span class="badge badge-primary label-info">Active</span>
                 @endif
             </td>
             <td>
                 @if ($user->isAdmin())
-                    <span class="badge badge-danger">Admin</span>
+                    <span class="badge badge-danger label-danger">Admin</span>
                 @else
                     <span class="badge badge-secondary">User</span>
                 @endif
