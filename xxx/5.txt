@@ -1,0 +1,12 @@
+Миграция - БД - Model - Тесты
+
+DB First (продумываем БД)
+
+Eloquent, ActiveRecord
+------------------------------
+
+Test - Entity - Миграции - БД
+
+Code First
+
+Doctrina
