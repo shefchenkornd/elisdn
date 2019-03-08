@@ -23,8 +23,7 @@ class CreateRegionsTable extends Migration
             // ->onDelete('CASCADE'); рекурсивно удалить все внешние вещи (улицы, деревни, дома, ...)
             $table->integer('parent_id')->nullable()->references('id')->on('regions')->onDelete('CASCADE');
 
-            // нам не нужны
-            //$table->timestamps();
+            $table->timestamps();
 
             // всё это мы сделали, чтобы не только в PHP было ограничение по уникальности, но и БД была "умной", поддерживала нас
             // и не давала другим, неопытным разработчикам допустим через PhpMyAdmin вносить кривые правки
