@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -76,7 +76,9 @@
 
     <main class="app-content py-3">
         <div class="container">
-            {{--section('breadcrumb', Breadcrumbs::render())--}}
+
+            {{--{{ section('breadcrumb', Breadcrumbs::render()) }}--}}
+
             {{--yield('breadcrumb')--}}
             @include('layouts.partials.flash')
             @yield('content')

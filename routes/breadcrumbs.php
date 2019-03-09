@@ -1,4 +1,6 @@
 <?php
+use \App\Entity\User;
+use \App\Entity\Region;
 
 // Home
 Breadcrumbs::register('home', function ($breadcrumbs) {
@@ -35,6 +37,7 @@ Breadcrumbs::register('cabinet', function ($breadcrumbs){
     $breadcrumbs->push('Cabinet', route('cabinet'));
 });
 
+
 /**
  * Admin User
  */
@@ -60,37 +63,31 @@ Breadcrumbs::register('admin.users.edit', function ($breadcrumbs, User $user){
 });
 
 
+/**
+ * Admin Regions
+ */
+Breadcrumbs::register('admin.regions.index', function ($breadcrumbs){
+    $breadcrumbs->parent('admin.home');
+    $breadcrumbs->push('Regions', route('admin.regions.index'));
+});
 
+Breadcrumbs::register('admin.regions.create', function ($breadcrumbs){
+    $breadcrumbs->parent('admin.regions.index');
+    $breadcrumbs->push('Create', route('admin.regions.create'));
+});
 
+Breadcrumbs::register('admin.regions.show', function ($breadcrumbs, Region $region){
 
+    if ($parent = $region->parent){
+        $breadcrumbs->parent('admin.regions.show', $parent);
+    }else{
+        $breadcrumbs->parent('admin.regions.index');
+    }
 
+    $breadcrumbs->push($region->name, route('admin.regions.show', $region));
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Breadcrumbs::register('admin.regions.edit', function ($breadcrumbs, Region $region){
+    $breadcrumbs->parent('admin.regions.index', $region);
+    $breadcrumbs->push('Edit', route('admin.regions.edit', $region));
+});

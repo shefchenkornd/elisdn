@@ -7,13 +7,6 @@
         <div class="btn-group col-xs-4">
             <a href="{{ route('admin.regions.edit', $region) }}" class="btn btn-primary mr-1 ">Edit</a>
 
-            @if ($user->isWait())
-                <form method="POST" action="{{ route('admin.regions.verify', $region) }}" class="mr-1 form col-xs-offset-1">
-                    {{ csrf_field() }}
-                    <button class="btn btn-success">Verify</button>
-                </form>
-            @endif
-
             <form method="POST" action="{{ route('admin.regions.update', $region) }}" class="mr-1 form col-xs-offset-1">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
@@ -21,7 +14,6 @@
             </form>
         </div>
     </div>
-
 
     <table class="table table-bordered table-striped">
         <thead>
@@ -39,5 +31,8 @@
         </tr>
         </tbody>
     </table>
+
+
+    @include('admin.regions._list', ['regions'=> $regions])
 
 @endsection

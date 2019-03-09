@@ -21,30 +21,7 @@ class RegionsController extends Controller
 
     public function index(Request $request)
     {
-
-        $query = Region::orderByDesc('id');
-
-        if (!empty($value = $request->get('id'))) {
-            $query->where('id', $value);
-        }
-
-        if (!empty($value = $request->get('name'))) {
-            $query->where('name', 'like', '%' . $value . '%');
-        }
-
-        if (!empty($value = $request->get('email'))) {
-            $query->where('email', 'like', '%' . $value . '%');
-        }
-
-        if (!empty($value = $request->get('status'))) {
-            $query->where('status', $value);
-        }
-
-        if (!empty($value = $request->get('role'))) {
-            $query->where('role', $value);
-        }
-
-        $regions = $query->paginate(20);
+        $regions = Region::where('parent_id', null)->orderBy('name')->get();
 
         return view('admin.regions.index', compact('regions'));
     }
@@ -66,7 +43,9 @@ class RegionsController extends Controller
 
     public function show(Region $region)
     {
-        return view('admin.regions.show', compact('region'));
+        $regions = Region::where('parent_id', $region->id)->orderBy('name')->get();
+
+        return view('admin.regions.show', compact('region', 'regions'));
     }
 
 
