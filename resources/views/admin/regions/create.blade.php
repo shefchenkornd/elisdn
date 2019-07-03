@@ -3,7 +3,7 @@
 @section('content')
     @include('admin.regions._nav')
 
-    <form method="POST" action="{{ route('admin.regions.store') }}">
+    <form method="POST" action="{{ route('admin.regions.store', ['parent' => $parent ? $parent->id : null]) }}">
         {{ csrf_field() }}
 
         <div class="form-group">
@@ -15,10 +15,10 @@
         </div>
 
         <div class="form-group">
-            <label for="name" class="col-form-label">E-mail Address</label>
-            <input name="email" value="{{ old('name') }}" type="email" id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} required">
-            @if ($errors->has('email'))
-                <span class="invalid-feedback"><strong>{{ $errors->first('email') }}</strong></span>
+            <label for="name" class="col-form-label">Slug</label>
+            <input name="slug" value="{{ old('name') }}" type="slug" id="slug" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }} required">
+            @if ($errors->has('slug'))
+                <span class="invalid-feedback"><strong>{{ $errors->first('slug') }}</strong></span>
             @endif
         </div>
 

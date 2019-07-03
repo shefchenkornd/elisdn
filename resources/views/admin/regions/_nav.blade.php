@@ -9,3 +9,6 @@
         <a class="nav-link" href="{{route('admin.regions.index')}}">Regions</a>
     </li>
 </ul>
+
+
+

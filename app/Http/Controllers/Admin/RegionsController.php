@@ -26,16 +26,32 @@ class RegionsController extends Controller
         return view('admin.regions.index', compact('regions'));
     }
 
-
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.regions.create');
+        $parent = null;
+
+        if ($request->get('parent')) {
+            $parent = Region::findOfFail($request->get('parent'));
+        }
+
+
+        return view('admin.regions.create', compact('parent'));
     }
 
 
-    public function store(CreateRequest $request)
+    public function store(Request $request)
     {
-        $region = Region::create( $request->only(['name', 'email']) );
+        $this->validate($request, [
+           'name' => 'required|string|max:255|unique:regions, name, NULL, id, parent_id,' . ($request['parent'] ?: 'NULL' ),
+           'slug' => 'required|string|max:255|unique:regions, slug, NULL, id, parent_id,' . ($request['parent'] ?: 'NULL' ),
+           'parent' => 'optional|exists:regions,id',
+        ]);
+
+        $region = Region::create([
+            'name' => $request['name'],
+            'slug' => $request['slug'],
+            'parent_id' => $request['parent'],
+        ]);
 
         redirect()->route('admin.regions.show', $region);
     }
