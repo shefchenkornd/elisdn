@@ -4,6 +4,9 @@ up:
 down:
 	sudo docker-compose down
 
+ps:
+	sudo docker ps
+
 build: perm
 	sudo docker-compose up --build
 
