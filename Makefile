@@ -13,6 +13,9 @@ build: perm
 php:
 	sudo docker-compose exec php-fpm bash
 
+node:
+	sudo docker-compose exec node bash
+
 perm:
 	sudo chown ${USER}:${USER} bootstrap/cache -R
 	sudo chown ${USER}:${USER} storage -R  && sudo chmod 777 -R storage
@@ -21,6 +24,7 @@ test:
 	sudo docker-compose exec php-fpm vendor/bin/phpunit --colors=always
 
 assets-install:
+	sudo docker-compose exec node npm install
 	sudo docker-compose exec node yarn install
 
 assets-rebuild:
