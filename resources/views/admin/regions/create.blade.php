@@ -3,7 +3,7 @@
 @section('content')
     @include('admin.regions._nav')
 
-    <form method="POST" action="{{ route('admin.regions.store', ['parent' => $parent ? $parent->id : null]) }}">
+    <form method="POST" action="{{ route('admin.regions.store', ['parent' => $parent ? $parent->id : '']) }}">
         {{ csrf_field() }}
 
         <div class="form-group">

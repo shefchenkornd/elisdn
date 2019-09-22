@@ -19,7 +19,7 @@ class RegionsController extends Controller
         $this->service = $service;
     }
 
-    public function index(Request $request)
+    public function index()
     {
         $regions = Region::where('parent_id', null)->orderBy('name')->get();
 
@@ -34,7 +34,6 @@ class RegionsController extends Controller
             $parent = Region::findOfFail($request->get('parent'));
         }
 
-
         return view('admin.regions.create', compact('parent'));
     }
 
@@ -42,9 +41,9 @@ class RegionsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'name' => 'required|string|max:255|unique:regions, name, NULL, id, parent_id,' . ($request['parent'] ?: 'NULL' ),
-           'slug' => 'required|string|max:255|unique:regions, slug, NULL, id, parent_id,' . ($request['parent'] ?: 'NULL' ),
-           'parent' => 'optional|exists:regions,id',
+           'name' => 'required|string|max:255|unique:regions,name,NULL,id,parent_id,' . ($request['name'] ?: 'NULL' ),
+           'slug' => 'required|string|max:255|unique:regions,slug,NULL,id,parent_id,' . ($request['slug'] ?: 'NULL' ),
+           'parent' => 'nullable|exists:regions,id',
         ]);
 
         $region = Region::create([
@@ -53,7 +52,7 @@ class RegionsController extends Controller
             'parent_id' => $request['parent'],
         ]);
 
-        redirect()->route('admin.regions.show', $region);
+        return redirect()->route('admin.regions.show', $region);
     }
 
 
@@ -71,11 +70,20 @@ class RegionsController extends Controller
     }
 
 
-    public function update(UpdateRequest $request, Region $region)
+    public function update(Request $request, Region $region)
     {
-        $region->update($request->only(['name', 'email', 'status ']));
+        $this->validate($request, [
+            'name' => 'required|string|max:255|unique:regions,name,' . $region->id . ',id,parent_id,' . $region->parent_id ?? null,
+            'slug' => 'required|string|max:255|unique:regions,slug,' . $region->id . ',id,parent_id,' . $region->parent_id ?? null,
+        ]);
 
-        return view('admin.regions.show', compact('region'));
+        $region->update([
+            'name' => $request['name'],
+            'slug' => $request['slug'],
+            'parent_id' => $request['parent'],
+        ]);
+
+        return redirect()->route('admin.regions.show', $region);
     }
 
 
@@ -84,12 +92,5 @@ class RegionsController extends Controller
         $region->delete();
 
         return redirect()->route('admin.regions.index');
-    }
-
-    public function verify(Region $region)
-    {
-        $this->service->verify($region->id);
-
-        return redirect()->route('admin.regions.show', $region);
     }
 }
