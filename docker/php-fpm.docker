@@ -1,7 +1,10 @@
-FROM php:7.1-fpm
+FROM php:7.2-fpm
+
 
 RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client \
-    && docker-php-ext-install mcrypt pdo_mysql \
+    && pecl install mcrypt-1.0.2 \
+    && docker-php-ext-enable mcrypt \
+    && docker-php-ext-install pdo_mysql \
     && apt-get install less && apt-get install nano
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -13,5 +16,3 @@ RUN git --version
 ADD ./docker/.bashrc /root
 
 WORKDIR /var/www
-
-RUN composer update
